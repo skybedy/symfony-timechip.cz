@@ -19,7 +19,8 @@ class ZavodyController extends AbstractController
         
         $listEvents = $zavody->listEvents($conn,$raceYear);
         return $this->render('zavody/index.html.twig', [
-            'controller_name' => 'ZavodyController',
+            'title' => 'Zavody '.$raceYear,
+            'listEvents' => $listEvents
         ]);
     }
 }

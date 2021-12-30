@@ -1,20 +1,47 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ZavodyController!{% endblock %}
-
+{% block title %}{{ title }}{% endblock %}
+{% block h1 %}{{title}}{% endblock %}
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/var/www/symfony-timechip.cz/src/Controller/ZavodyController.php'|file_link(0) }}">src/Controller/ZavodyController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/var/www/symfony-timechip.cz/templates/zavody/index.html.twig'|file_link(0) }}">templates/zavody/index.html.twig</a></code></li>
-    </ul>
-</div>
+<table class="table table-hover">
+    <!--<thead>
+    <tr class="header">
+        <td>Název</td>
+        <td>Místo</td>
+        <td>Datum</td>
+        <td>Sport</td>
+    </tr>
+    </thead>-->
+    {% for event in listEvents %}
+        <tr>
+            <td>{{event.nazev_zavodu}}</td>
+            <td>{{event.misto_zavodu}}</td>
+            {% if event.datum_zavodu_konec == true %}
+                <td>{{event.den_zavodu}} - {{event.datum_zavodu_konec}}</td>
+            {% endif %}
+            {% if event.datum_zavodu_konec == false %}
+                <td>{{event.datum}}</td>
+            {% endif %}
+            <td>{{event.typ_zavodu}}</td>
+            {% if event.web == true %}
+                <td><a target="_blank" href="http://{{event.web}}">WWW</a></td>
+            {% endif %}
+            {% if event.web == false %}
+                <td>&nbsp;</td>
+            {% endif %}
+            {% if event.prihlasky == true %}
+                <td><a target="_blank" href="https://entry.timechip.cz">Přihlášky</a></td>
+            {% endif %}
+            {% if event.prihlasky == false %}
+                <td>&nbsp;</td>
+            {% endif %}
+            {% if event.nove_vysledky == true %}
+                <td><a target="_blank" href="http://vysledky.timechip.cz/#{{event.year}}/{{event.id_zavodu}}">Výsledky</a></td>
+            {% endif %}
+            {% if event.nove_vysledky == false %}
+                <td>&nbsp;</td>
+            {% endif %}
+        </tr>
+    {% endfor %}
+</table>
 {% endblock %}
