@@ -17,9 +17,13 @@ class Basic {
 
     protected function nextYear()
     {
-        return date("Y");
+        return date("Y") + 1;
     }
 
+    protected function lastYear()
+    {
+        return date("Y") - 1;
+    }
 
 
 

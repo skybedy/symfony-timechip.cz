@@ -15,11 +15,12 @@ class HomeController extends AbstractController
      */
     public function index(Home $home,Connection $conn): Response
     {
-        print_r($home->nextRaces($conn));
         
         
         return $this->render('home/index.html.twig', [
-            'controller_name' => 'HomeController',
+            'title' => 'Hlavní strana',
+            'nextEvents' => $home->nextEvents($conn),
+            'lastResults' => $home->lastResults($conn)
         ]);
     }
 }

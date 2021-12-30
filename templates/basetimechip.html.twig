@@ -21,7 +21,9 @@
         <h1>{% block h1 %}{% endblock %}</h1>
     </div>
 </div>
-{% block body %}{% endblock %}
+<div class="container content">
+    {% block body %}{% endblock %}
+</div>
 {{ include('_footer.html.twig') }}
 </body>
 </html>
