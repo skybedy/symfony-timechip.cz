@@ -1,7 +1,6 @@
 {% extends 'base.html.twig' %}
 {% block title %}{{ title }}{% endblock %}
 {% block h1 %}{{title}}{% endblock %}
-
 {% block body %}
         <div class="row">
             <div class="container">
@@ -12,13 +11,21 @@
                         <div class="panel-body">
                             <h5>Kontaktní formulář</h5>
                             <div id="form-contact-wrapper">
-                                    {{ form_start(email_form) }}
-                                    {{ form_widget(email_form,{'attr':{'id':'contact-form'}}) }}
-
-
-                                    {{ form_end(email_form) }}
-
-                            
+                                <form id="form-contact">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="jmeno" placeholder="Jméno a příjmení" />
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="tel" class="form-control" name="telefon" placeholder="Telefon" />
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="email" class="form-control" name="email" placeholder="E-mail" />
+                                    </div>
+                                    <div class="form-group">
+                                        <textarea name="zprava" class="form-control" rows="10" placeholder="Váš text"></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-default testtest">Odeslat</button>
+                                </form>
                             </div>
 
                         </div>
