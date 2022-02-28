@@ -32,7 +32,7 @@ class ContactController extends AbstractController
             ->subject('Zpráva z webového formuláře')
             ->text($contactFormData['zprava']);
             $mailer->send($email);
-            $this->addFlash('success', 'Váš email byl úspěšně odeslán');
+            $this->addFlash('success', 'Váš email byl úspěšně možná odeslán');
             return $this->redirectToRoute('contact');
         }
         
